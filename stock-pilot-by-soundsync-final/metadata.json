@@ -1,0 +1,7 @@
+{
+  "name": "Stock Pilot by SoundSync",
+  "description": "A real-time inventory management system that allows sellers to manage their inventory using voice commands. Powered by Gemini, users can add/remove items, and ask questions about their stock conversationally. Data is stored and synchronized in real-time with Firebase.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
