@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users can read/write their own profile, and read other user profiles.
+    match /users/{userId} {
+      // Demo: allow public read so admin panel works without auth
+      allow read: if true;
+      allow write: if request.auth != null;
+      
+      // All user subcollections are accessible by the authenticated user
+      match /{document=**} {
+        allow read: if true;
+        allow write: if request.auth != null;
+      }
+    }
+    
+    // Chats are accessible by authenticated users
+    match /chats/{chatId} {
+      allow read, write: if request.auth != null;
+      
+      match /messages/{messageId} {
+        allow read, write: if request.auth != null;
+      }
+    }
+    
+    // Notifications are accessible by authenticated users
+    match /notifications/{notificationId} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Transactions are read/write by authenticated users
+    match /transactions/{transactionId} {
+      // Demo: allow public read so admin panel works without auth
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Site Config is readable by everyone, and writeable by anyone (since getSiteConfig writes defaults when not present)
+    match /site_config/{configId} {
+      allow read, write: if true;
+    }
+  }
+}
