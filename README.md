@@ -1,4 +1,4 @@
-# 📦 StockPilot v2.0
+# 📦 StockPilot
 
 ### AI-Powered Voice-Based Inventory & Shop Management System
 
