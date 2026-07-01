@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import HeroSection from './HeroSection';
 import StatsSection from './StatsSection';
-import BackgroundEffects from './BackgroundEffects';
 import FeaturesSection from './FeaturesSection';
 import BenefitsSection from './BenefitsSection';
 import ForSellersSection from './ForSellersSection';
@@ -77,12 +76,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onAdminClick }) => {
             
             {!isLoginModalOpen && <CustomCursor />}
             
-            <BackgroundEffects />
-            
-            <div className="relative z-10">
-                <Header onLoginClick={handleOpenLoginModal} />
-                <main>
-                    <HeroSection onGetStartedClick={handleOpenLoginModal} config={config?.hero} />
+            <Header onLoginClick={handleOpenLoginModal} />
+            <main>
+                <HeroSection onGetStartedClick={handleOpenLoginModal} config={config?.hero} />
                 <StatsSection />
                 <FeaturesSection features={config?.features} />
                 <BenefitsSection />
@@ -93,10 +89,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onAdminClick }) => {
                     handleOpenLoginModal();
                 }} />
 
-                    <FAQSection faqs={config?.faqs} />
-                </main>
-                <Footer onAdminClick={onAdminClick} config={config?.footer} />
-            </div>
+                <FAQSection faqs={config?.faqs} />
+            </main>
+            <Footer onAdminClick={onAdminClick} config={config?.footer} />
             <LoginComponent isOpen={isLoginModalOpen} onClose={handleCloseLoginModal} />
         </div>
     );

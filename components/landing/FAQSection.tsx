@@ -9,7 +9,27 @@ interface FAQSectionProps {
 
 const FAQSection: React.FC<FAQSectionProps> = ({ faqs }) => {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
-    const displayFaqs = faqs || [];
+    
+    const defaultFaqs: FAQ[] = [
+        {
+            question: "Is Stock Pilot free to use?",
+            answer: "Yes, we offer a free 'Vyapar Shuru' plan that includes basic features. You can upgrade to 'Vyapar Pro' for unlimited access to AI tools."
+        },
+        {
+            question: "How does the voice command feature work?",
+            answer: "Simply tap the microphone icon and speak naturally. You can say things like 'Add 50 packets of Milk' or 'What is expiring soon?'."
+        },
+        {
+            question: "Is my data secure?",
+            answer: "Absolutely. We use industry-standard encryption and Google Firebase security rules to ensure your business data is safe and private."
+        },
+        {
+            question: "Can I use it for any type of store?",
+            answer: "Stock Pilot is optimized for Retail, Grocery, Medical, Textile, and Hardware stores, but can be adapted for many inventory-based businesses."
+        }
+    ];
+
+    const displayFaqs = faqs && faqs.length > 0 ? faqs : defaultFaqs;
 
     const toggleFAQ = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
